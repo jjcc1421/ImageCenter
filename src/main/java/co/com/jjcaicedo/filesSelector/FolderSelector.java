@@ -27,7 +27,10 @@ public class FolderSelector {
             listFilesForFolder(folder);
         }
     }
-
+/**
+ * Return files into folder and subfolders
+ * @param folder 
+ */
     public void listFilesForFolder(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
