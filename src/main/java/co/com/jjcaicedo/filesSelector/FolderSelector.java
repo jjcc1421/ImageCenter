@@ -21,20 +21,20 @@ public class FolderSelector {
         this.files = new ArrayList<String>();
     }
 
-    public void listFilesForFolderPath(String folderPath) {
+    public void listFilesForFolderPath(String folderPath, boolean subfolder) {
         File folder = new File(folderPath);
         if (folder.isDirectory()) {
-            listFilesForFolder(folder);
+            listFilesForFolder(folder,subfolder);
         }
     }
 /**
  * Return files into folder and subfolders
  * @param folder 
  */
-    public void listFilesForFolder(final File folder) {
+    public void listFilesForFolder(final File folder,boolean subfolder) {
         for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
-                listFilesForFolder(fileEntry);
+            if (fileEntry.isDirectory() && subfolder) {
+                listFilesForFolder(fileEntry,subfolder);
             } else {
                 System.out.println(fileEntry.getName());
                 files.add(fileEntry.getAbsolutePath());
